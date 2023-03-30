@@ -1,18 +1,29 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import colors from './src/theme/colors'
-import fonts from './src/theme/fonts'
-import AntDesign from 'react-native-vector-icons/AntDesign'
- 
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import React from 'react';
+import HomeScreen from './src/screens/HomeScreen/HomeScreen';
+import CommentsScreen from './src/screens/CommentsScreen/CommentsScreen';
+import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
+import EditProfileScreen from './src/screens/EditProfileScreen/EditProfileScreen';
+import PostUploadScreen from './src/screens/PostUploadScreen/PostUploadScreen';
+
 const App = () => {
   return (
-    <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-      <Text style={{color: colors.primary, fontSize: fonts.size.default}} >Hello World
-      <AntDesign name='stepforward' size={25}/>
-      </Text>
-      
+    <View style={styles.app}>
+      {/* <HomeScreen /> */}
+      {/* <CommentsScreen /> */}
+      {/* <ProfileScreen /> */}
+      {/* <EditProfileScreen /> */}
+      <PostUploadScreen />
     </View>
-  )
-}
+  );
+};
 
-export default App
+const styles = StyleSheet.create({
+  app: {
+    flex: 1,
+    marginTop: 50,
+    marginBottom: 50,
+  },
+});
+
+export default App;
