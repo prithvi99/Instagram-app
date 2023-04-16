@@ -3,8 +3,12 @@ import React from 'react';
 import styles from './styles';
 import Button from '../../components/Button/Button';
 import user from '../../assets/data/user.json';
+import {useNavigation} from '@react-navigation/native';
+import {ProfileNavigationProp} from '../../types/navigation';
+import {Auth} from 'aws-amplify';
 
 const ProfileHeader = () => {
+  const navigation = useNavigation<ProfileNavigationProp>();
   return (
     <View style={styles.root}>
       <View style={styles.headerRow}>
@@ -30,12 +34,9 @@ const ProfileHeader = () => {
       <View style={{flexDirection: 'row'}}>
         <Button
           text="Edit Profile"
-          onPress={() => console.log('Edit Profile Button')}
+          onPress={() => navigation.navigate('Edit Profile')}
         />
-        <Button
-          text="Different Button"
-          onPress={() => console.log('Edit Profile Button')}
-        />
+        <Button text="Signout" onPress={() => Auth.signOut()} />
       </View>
     </View>
   );

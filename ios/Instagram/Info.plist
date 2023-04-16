@@ -40,6 +40,10 @@
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need gallery permission to upload pictures</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use the camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow $(PRODUCT_NAME) to use the microphone</string>
 
 	<key>UIAppFonts</key>
 	<array>

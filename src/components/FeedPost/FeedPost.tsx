@@ -12,6 +12,8 @@ import {IPost} from '../../types/models';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel/Carousel';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import {useNavigation} from '@react-navigation/native';
+import {FeedNavigationProp} from '../../types/navigation';
 
 interface IFeedPost {
   post: IPost;
@@ -22,8 +24,18 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpended, setIsDescriptionExpended] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
+  const navigation = useNavigation<FeedNavigationProp>();
+
   const toggleIsLiked = () => {
     setIsLiked(e => !e);
+  };
+
+  const navigateToUser = () => {
+    navigation.navigate('UserProfile', {userId: post.user.id});
+  };
+
+  const navigateToComments = () => {
+    navigation.navigate('Comments', {postId: post.id});
   };
 
   let content = null;
@@ -59,7 +71,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>{post.user.username}</Text>
+        <Text onPress={navigateToUser} style={styles.userName}>
+          {post.user.username}
+        </Text>
 
         <Entypo
           style={styles.threeDots}
@@ -115,7 +129,9 @@ const FeedPost = ({post, isVisible}: IFeedPost) => {
         </Text>
 
         {/* Comment Section */}
-        <Text style={{color: 'grey', marginTop: 5, marginBottom: 2.5}}>
+        <Text
+          onPress={navigateToComments}
+          style={{color: 'grey', marginTop: 5, marginBottom: 2.5}}>
           View all {post.nofComments} comments
         </Text>
 

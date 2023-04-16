@@ -4,7 +4,7 @@ import fonts from "../../theme/fonts";
 
 export default StyleSheet.create({
     post: {
-      marginTop: 50,
+      // marginTop: 50,
     },
     Header: {
       flexDirection: 'row',
